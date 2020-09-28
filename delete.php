@@ -6,7 +6,7 @@
                 echo $q;
                 if(mysqli_query(connection::db(), $q))
 		{
-			header("location:adminpannel.php");
+			header("location : adminpannel.php");
 		}
 		else
 		{
