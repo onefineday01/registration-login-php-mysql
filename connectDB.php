@@ -11,9 +11,9 @@
 		$email = mysqli_real_escape_string($con, $_POST['email']);
 		$password1 = mysqli_real_escape_string($con, $_POST['password1']);
 		$password2 = mysqli_real_escape_string($con, $_POST['password2']);
-		$sql = "SELECT * from USERDATA WHERE email = '$email'";
+		$sql = "SELECT * from userdata WHERE email = '$email'";
 		$result = mysqli_query($con, $sql);
-		$sql = "SELECT * from USERDATA WHERE username = '$username'";
+		$sql = "SELECT * from userdata WHERE username = '$username'";
 		$result2 = mysqli_query($con, $sql);
 		if(empty($username)){
 			array_push($faults, "Username is required");
@@ -47,7 +47,7 @@
             		array_push($faults, "username not available");
             
         	if(count($faults) == 0){
-			$sql = "INSERT INTO USERDATA (username, email, admin, active, password) VALUES ('$username', '$email', '$admin', '$active', '$password1')";
+			$sql = "INSERT INTO userdata (username, email, admin, active, password) VALUES ('$username', '$email', '$admin', '$active', '$password1')";
 			mysqli_query($con, $sql);
 			header('location: login.php');
 		}
@@ -66,12 +66,12 @@
 		}
 
 		if (count($faults) == 0) {
-			$query = "SELECT * FROM userDATA WHERE username='$username' AND password='$password'";
+			$query = "SELECT * FROM userdata WHERE username='$username' AND password='$password'";
 			$results = mysqli_query($con, $query);
 			if (mysqli_num_rows($results) == 1) {
 				$_SESSION['username'] = $username;
 				$_SESSION['success'] = "You are now logged in";
-				$sql = "Update userDATA SET active = 1 WHERE username = '{$_SESSION['username']}'";
+				$sql = "Update userdata SET active = 1 WHERE username = '{$_SESSION['username']}'";
 				mysqli_query($con, $sql);
 				$row = mysqli_fetch_assoc($results);
 				if($row['admin'] == 0)

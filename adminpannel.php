@@ -21,7 +21,7 @@
 <html>
 <head>
 	<title>Admin Pannel</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
 
@@ -48,7 +48,7 @@
 
                         <?php //include('connection.php');
 
-                                $q = "select * from USERDATA Where username != '{$_SESSION['username']}' AND uid != 27";
+                                $q = "select * from USERDATA Where username != '{$_SESSION['username']}' AND uid != 1";
 
                                 $query = mysqli_query(connection::db(),$q);
 
@@ -70,7 +70,7 @@
                         <?php 
                                 }
                         ?>
-    	<p> <a href="welcome.php?logout='1'" style="color: red;">logout</a> </p>
+    	<p> <a href="/welcome.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 </div>
 		
